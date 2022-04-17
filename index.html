@@ -3,190 +3,73 @@
 	<head>
 
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="./css/style.css" />
+	<script src="./Js/Javascript.js"></script>
+	<link rel="icon" type="image/x-icon" href="./Imagens/Calculadora.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Calculadora</title>
+	<title>Calculadora</title>
 
-	<style>
+	</head>
 
-/* ---------------> Início da estilização */
+	<body>
 
-	*{ margin: 0; padding: 0; }
+		<div class="fundo">
 
-
-	.fundo{
-		background-color: rgba(0, 0, 0, 0.1);
-		height: 100vh;
-		color: white;
-		font-family: arial;
-		text-align: center;
-	}
-
-/* ---------------> Painel azul */
-
-	.calculadora{
-		position: absolute;
-		background-color: rgba(0, 0, 0, 0.1);
-		background-color: #009AD5;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		border-radius: 15px;
-		padding: 15px;
-	}
-
-/* ---------------> Botões */
-
-	.botao{
-		background-color: #009AD5;
-		width: 50px;
-		height: 50px;
-		font-size: 25px;
-		cursor: pointer;
-		border: none;
-		color: white;
-		margin: 3px;
-		border-radius: 3px;
-		-webkit-box-shadow: 5px 5px 8px 5px rgba(0,0,0,0.25); 
-		box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.25);
-	}
-
-/* ---------------> Hover de todos os botões */
-
-	.botao:hover{ background-color: #055675; }
-
-/* ---------------> Campo do resultado das operações */
-
-	#resultado{ 
-		width: 212px;
-		background-color: white; 
-		height: 30px;
-		margin: 6px;
-		border-radius: 3px;
-		font-size: 20px;
-		color: black;
-		text-align: right;
-		padding: 5px;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		}
+			<div class="calculadora">
+				<h1>Calculadora</h1>
+				<p id="resultado"></p>
 
 
-/* ----------------------> Fim da estilização. */
+			<table>
+				<tr>
 
-	</style>
+					<td><button class="botao" onclick="clean()">c</button></td>
+					<td><button class="botao" onclick="back()"><</button></td>
+					<td><button class="botao" onclick="insert('/')">/</button></td>
+					<td><button class="botao" onclick="insert('*')">x</button></td>
 
-</head>
+				</tr>
 
-<body>
+				<tr>
 
-	<div class="fundo">
+					<td><button class="botao" onclick="insert('7')">7</button></td>
+					<td><button class="botao" onclick="insert('8')">8</button></td>
+					<td><button class="botao" onclick="insert('9')">9</button></td>
+					<td><button class="botao" onclick="insert('-')">-</button></td>
 
+				</tr>
 
-	<div class="calculadora">
-		<h1>Calculadora</h1>
-		<p id="resultado"></p>
+				<tr>
 
+					<td><button class="botao" onclick="insert('4')">4</button></td>
+					<td><button class="botao" onclick="insert('5')">5</button></td>
+					<td><button class="botao" onclick="insert('6')">6</button></td>
+					<td><button class="botao" onclick="insert('+')">+</button></td>
+					
+				<tr>
 
-	<table>
-	<tr>
+					<td><button class="botao" onclick="insert('1')">1</button></td>
+					<td><button class="botao" onclick="insert('2')">2</button></td>
+					<td><button class="botao" onclick="insert('3')">3</button></td>
+					<td rowspan="2"><button class="botao" style="height: 106px;" onclick="calcular()">=</button></td>
 
-		<td><button class="botao" onclick="clean()">c</button></td>
-		<td><button class="botao" onclick="back()"><</button></td>
-		<td><button class="botao" onclick="insert('/')">/</button></td>
-		<td><button class="botao" onclick="insert('*')">x</button></td>
+				</tr>
 
-	</tr>
+				<tr>
 
-	<tr>
+					<td colspan="2"><button class="botao" style="width: 108px" onclick="insert('0')">0</button></td>
+					<td><button class="botao" onclick="insert('.')">.</button></td>
 
-		<td><button class="botao" onclick="insert('7')">7</button></td>
-		<td><button class="botao" onclick="insert('8')">8</button></td>
-		<td><button class="botao" onclick="insert('9')">9</button></td>
-		<td><button class="botao" onclick="insert('-')">-</button></td>
+				</tr>
 
-	</tr>
+			</table>
 
-	<tr>
+			</div>
 
-		<td><button class="botao" onclick="insert('4')">4</button></td>
-		<td><button class="botao" onclick="insert('5')">5</button></td>
-		<td><button class="botao" onclick="insert('6')">6</button></td>
-		<td><button class="botao" onclick="insert('+')">+</button></td>
+		</div> 
 
-	</tr>
-
-	<tr>
-
-		<td><button class="botao" onclick="insert('1')">1</button></td>
-		<td><button class="botao" onclick="insert('2')">2</button></td>
-		<td><button class="botao" onclick="insert('3')">3</button></td>
-		<td rowspan="2"><button class="botao" style="height: 106px;" onclick="calcular()">=</button></td>
-
-	</tr>
-
-	<tr>
-
-		<td colspan="2"><button class="botao" style="width: 108px" onclick="insert('0')">0</button></td>
-		<td><button class="botao" onclick="insert('.')">.</button></td>
-
-	</tr>
-
-	</table>
-
-	</div>
-</div>
-
-	<script>
-
-/* ----------------------> Início do JavaScript.*/
-
-/* ----------> Animação dos números e letras*/
-
-	 function insert(num)
-	 {
-
-	var numero = document.getElementById('resultado').innerHTML;
-	document.getElementById('resultado').innerHTML = numero + num; 
-
-	}
+		<footer>@luhrodrigues45</footer>
 
 
-/* ---------> Função para limpar todos os números do box.*/
-
-	function clean()
-	{
-		document.getElementById('resultado').innerHTML = "";
-	}
-
-
-/* ---------> Função para apagar um por um dos números do box.*/
-
-	function back()
-	{
-		var resultado = document.getElementById('resultado').innerHTML;
-		document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length -1);
-	}
-
-
-/* ---------> Função para calcular os números.*/
-
-	function calcular()
-	{
-		var resultado = document.getElementById('resultado').innerHTML;
-		if(resultado)
-		{
-			document.getElementById('resultado').innerHTML = eval(resultado);
-		}
-	}
-	
-
-/* ----------> Obs: Usar o nome da função como numero pode prejudicar 
-o funcionamento das funções. 
-Exemplo: numero + num(Números não aparecem ao lado quando clicado na calculadora).*/
-
-	</script>
-
-<footer>@luhrodrigues45</footer>
-</body>
-</html>
+	</body>
+</html> 
