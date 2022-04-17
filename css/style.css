@@ -1,0 +1,62 @@
+/* ---------------> Início da estilização */
+
+	*{ margin: 0; padding: 0; }
+
+
+	.fundo{
+		background-color: rgba(0, 0, 0, 0.1);
+		height: 100vh;
+		color: white;
+		font-family: arial;
+		text-align: center;
+	}
+
+/* ---------------> Painel azul */
+
+	.calculadora{
+		position: absolute;
+		background-color: rgba(0, 0, 0, 0.1);
+		background-color: #009AD5;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		border-radius: 15px;
+		padding: 15px;
+	}
+
+/* ---------------> Botões */
+
+	.botao{
+		background-color: #009AD5;
+		width: 50px;
+		height: 50px;
+		font-size: 25px;
+		cursor: pointer;
+		border: none;
+		color: white;
+		margin: 3px;
+		border-radius: 3px;
+		-webkit-box-shadow: 5px 5px 8px 5px rgba(0,0,0,0.16); 
+		box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
+	}
+
+/* ---------------> Hover de todos os botões */
+
+	.botao:hover{ background-color: #055675; }
+
+/* ---------------> Campo do resultado das operações */
+
+	#resultado{ 
+		width: 212px;
+		background-color: white; 
+		height: 30px;
+		margin: 6px;
+		border-radius: 3px;
+		font-size: 20px;
+		color: black;
+		text-align: right;
+		padding: 5px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		}
